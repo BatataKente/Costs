@@ -11,6 +11,43 @@ export default function Projects() {
     const [projects, setProjects] = useState([])
     const [removeLoading, setRemoveLoading] = useState(false)
     const location = useLocation()
+    const loadData = () => {
+        fetch(
+            'http://localhost:5000/projects', 
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        .then(response => response.json())
+        .then(
+            data => {
+                setProjects(data)
+                setRemoveLoading(true)
+            }
+        )
+        .catch(error => console.log(error))
+    }
+    const removeProject = id => {
+        fetch(
+            `http://localhost:5000/projects/${id}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        .then(response => response.json())
+        .then(
+            data => {
+                setProjects(projects.filter(project => project.id !== id))
+            }
+        )
+        .catch(error => console.log(error))
+    }
     let message = ''
     if(location.state) {
         message = location.state.message
@@ -18,25 +55,7 @@ export default function Projects() {
     useEffect(
         // () => {
         //     setTimeout(
-                () => {
-                    fetch(
-                        'http://localhost:5000/projects', 
-                        {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        }
-                    )
-                    .then(response => response.json())
-                    .then(
-                        data => {
-                            setProjects(data)
-                            setRemoveLoading(true)
-                        }
-                    )
-                    .catch(error => console.log(error))
-                }, 
+                loadData, 
         //         3000
         //     )
         // }, 
@@ -52,7 +71,11 @@ export default function Projects() {
             <Container customClass="start">
                 {
                     projects.length > 0 && projects.map(
-                        (project) => (<ProjectCard project={project}/>)
+                        (project) => (
+                            <ProjectCard 
+                                project={project}
+                                handleRemove={removeProject}/>
+                        )
                     )
                 }
                 {!removeLoading && <Loading/>}

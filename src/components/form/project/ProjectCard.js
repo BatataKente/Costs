@@ -2,8 +2,12 @@ import styles from './ProjectCard.module.css'
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
 
-export default function ProjectCard({project}) {
+export default function ProjectCard({project, handleRemove}) {
     const category = project.category ? project.category.name : "Unknown"
+    const remove = event => {
+        event.preventDefault()
+        handleRemove(project.id)
+    }
     return( 
         <>
             {
@@ -19,7 +23,7 @@ export default function ProjectCard({project}) {
                             <Link to='/'>
                                 <BsPencil/> Editar
                             </Link>
-                            <button>
+                            <button onClick={remove}>
                                 <BsFillTrashFill/> Excluir
                             </button>
                         </div>
