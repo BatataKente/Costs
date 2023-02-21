@@ -1,4 +1,4 @@
-import DonRamon from '../../img/SeuMadruga.jpg'
+import DonRamon from '../../../img/SeuMadruga.jpg'
 import styles from './SeuMadruga.module.css'
 
 export default function SeuMadruga() {

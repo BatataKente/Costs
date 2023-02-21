@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
-import Container from './Container.js'
+import Container from '../container/Container.js'
 import styles from './NavigationBar.module.css'
-import logo from '../../img/costs_logo.png'
+import logo from '../../../img/costs_logo.png'
 
 export default function NavigationBar() {
     return(

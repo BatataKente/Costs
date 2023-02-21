@@ -1,0 +1,25 @@
+{
+    "globals": {
+        "fetch": "readonly",
+        "console": "readonly",
+        "module": "readonly",
+        "document": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2015,
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-unused-vars": "warn",
+        "no-console": "warn",
+        "no-dupe-keys": "error", 
+        "no-extra-semi": "warn",
+        "eqeqeq": "warn", 
+        "curly": "off", 
+        "no-param-reassign": "off",
+        "no-undef": "error"
+    }
+}
