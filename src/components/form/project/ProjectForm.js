@@ -1,11 +1,11 @@
-import Input from '../form/Input'
-import Select from '../form/Select'
-import SubmitButton from '../form/SubmitButton'
+import Input from '../Input'
+import Select from '../Select.js'
+import SubmitButton from '../SubmitButton'
 import styles from './ProjectForm.module.css'
 import {useState, useEffect} from 'react'
 
 export default function ProjectForm({handleSubmit, buttonText, projectData}) {
-    const[categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([])
     const [project, setProject] = useState(projectData || {})
     useEffect(
         () => {
@@ -25,13 +25,13 @@ export default function ProjectForm({handleSubmit, buttonText, projectData}) {
     )
     const submit = (event) => {
         event.preventDefault()
-        console.log(project)
         handleSubmit(project)
     }
     function handleChange(arg) {
         setProject({...project, [arg.target.name]: arg.target.value})
     }
     function handleCategory(arg) {
+        console.log(arg)
         setProject(
             {
                 ...project, category: {
@@ -59,9 +59,9 @@ export default function ProjectForm({handleSubmit, buttonText, projectData}) {
                 value={project.budget ? project.budget : ''}/>
             <Select 
                 name="category_id" 
-                text="Selecione a categoria: " 
+                text="Selecione a categoria: "
                 options={categories}
-                handlerOnChange={handleCategory}
+                handleOnChange={handleCategory}
                 value={project.category ? project.category.id : ''}/>
             <SubmitButton text={buttonText}/>
         </form>

@@ -1,13 +1,10 @@
-import ProjectForm from '../project/ProjectForm'
+import ProjectForm from '../../form/project/ProjectForm.js'
 import styles from './NewProject.module.css'
 import {useNavigate} from 'react-router-dom'      
 
 export default function NewProject() {
-
-    const history = useNavigate()
-
+    const navigate = useNavigate()
     function createPost(project) {
-        // initialize cost ans services
         project.cost = 0
         project.services = []
         fetch(
@@ -20,10 +17,11 @@ export default function NewProject() {
             }
         )
         .then(response => response.json())
-        .then(data => history('/projects', {message: 'Projeto criado com sucesso!'}))// rediret
+        .then(
+            data => navigate('/projects', {state: {message: 'Projeto criado com sucesso!'}})
+        )
         .catch(error => console.log(error))
     }
-
     return(
         <div className={styles.newproject_container}>
             <h1>Criar Projeto</h1>

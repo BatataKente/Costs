@@ -1,15 +1,23 @@
 {
   "projects": [
     {
-      "name": "lero leor",
-      "budget": "5000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "name": "Lero Lero",
+      "budget": "3000",
       "cost": 0,
       "services": [],
       "id": 1
     },
     {
+      "category": {
+        "id": "1",
+        "name": "Infra"
+      },
       "name": "Meuzovo",
-      "budget": "123",
+      "budget": "1200",
       "cost": 0,
       "services": [],
       "id": 2
