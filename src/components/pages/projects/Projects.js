@@ -11,6 +11,7 @@ export default function Projects() {
     const [projects, setProjects] = useState([])
     const [removeLoading, setRemoveLoading] = useState(false)
     const location = useLocation()
+    const [projectMessage, setProjectMessage] = useState('')
     const loadData = () => {
         fetch(
             'http://localhost:5000/projects', 
@@ -42,8 +43,9 @@ export default function Projects() {
         )
         .then(response => response.json())
         .then(
-            data => {
+            () => {
                 setProjects(projects.filter(project => project.id !== id))
+                setProjectMessage('projeto removido com sucesso!')
             }
         )
         .catch(error => console.log(error))
@@ -68,6 +70,7 @@ export default function Projects() {
                 <LinkButton to="/newproject" text="Criar Projeto">novo projeto</LinkButton>
             </div>
             {message && <Message message={message} type="success"/>}
+            {projectMessage && <Message message={projectMessage} type="success"/>}
             <Container customClass="start">
                 {
                     projects.length > 0 && projects.map(

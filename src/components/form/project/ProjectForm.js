@@ -25,10 +25,15 @@ export default function ProjectForm({handleSubmit, buttonText, projectData}) {
     )
     const submit = (event) => {
         event.preventDefault()
-        handleSubmit(project)
+        if(project.name !== null) handleSubmit(project)
     }
     function handleChange(arg) {
-        setProject({...project, [arg.target.name]: arg.target.value})
+        setProject(
+            {
+                ...project, 
+                [arg.target.name]: arg.target.value
+            }
+        )
     }
     function handleCategory(arg) {
         console.log(arg)
