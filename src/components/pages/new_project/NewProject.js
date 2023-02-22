@@ -16,9 +16,8 @@ export default function NewProject() {
                 body: JSON.stringify(project)
             }
         )
-        .then(response => response.json())
         .then(
-            data => navigate('/projects', {state: {message: 'Projeto criado com sucesso!'}})
+            () => navigate('/projects', {state: {message: 'Projeto criado com sucesso!'}})
         )
         .catch(error => console.log(error))
     }

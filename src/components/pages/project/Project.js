@@ -7,7 +7,7 @@ import Message from '../../layout/message/Message.js'
 import ProjectForm from '../../form/project/ProjectForm.js'
 import ServiceForm from '../../form/service/ServiceForm.js'
 import ServiceCard from '../../form/service/ServiceCard.js'
-import {parse, v4 as uuidv4} from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 export default function Project() {
     const {id} = useParams()
@@ -37,7 +37,7 @@ export default function Project() {
                             setServices(data.services)
                         }
                     )
-                    .catch(error => console.log(error))
+                    .catch(error => setMessage(error))
                 }, 
             //     5000
             // )
@@ -70,7 +70,7 @@ export default function Project() {
                 setType('success')
             }
         )
-        .catch(error => console.log(error))
+        .catch(error => setMessage(error))
 }
 function removeService(serviceToRemove) {
     setMessage('')
@@ -96,7 +96,7 @@ function removeService(serviceToRemove) {
             setType('success')
         }
     )
-    .catch(error => console.log(error))
+    .catch(error => setMessage(error))
 }
 function createService(project) {
     setMessage('')
@@ -125,13 +125,12 @@ function createService(project) {
             body: JSON.stringify(project)
         }
     )
-    .then(response => response.json())
     .then(
-        data => {
+        () => {
             setShowServiceForm(false)
         }
     )
-    .catch(error => console.log(error))
+    .catch(error => setMessage(error))
 }
 function toggleServiceForm() {
     setShowServiceForm(!showServiceForm)
