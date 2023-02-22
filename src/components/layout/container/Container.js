@@ -1,9 +1,9 @@
 import styles from './Container.module.css'
 
-export default function Container(args) {
+export default function Container({customClass, children}) {
     return(
-        <div className={`${styles.container} ${styles[args.customClass]}`}>
-            {args.children}
+        <div className={`${styles.container} ${styles[customClass]}`}>
+            {children}
         </div>
     )
 }

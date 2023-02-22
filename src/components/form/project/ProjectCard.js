@@ -1,4 +1,4 @@
-import styles from './ProjectCard.module.css'
+import styles from '../Card.module.css'
 import {BsPencil, BsFillTrashFill} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
 
@@ -20,7 +20,7 @@ export default function ProjectCard({project, handleRemove}) {
                             {category}
                         </p>
                         <div className={styles.project_card_actions}>
-                            <Link to='/'>
+                            <Link to={`/project/${project.id}`}>
                                 <BsPencil/> Editar
                             </Link>
                             <button onClick={remove}>

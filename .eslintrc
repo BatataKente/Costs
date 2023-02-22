@@ -3,21 +3,21 @@
         "fetch": "readonly",
         "console": "readonly",
         "module": "readonly",
-        "document": "readonly"
+        "document": "readonly",
+        "setTimeout": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2015,
-        "ecmaFeatures": {
-          "jsx": true
-        },
+        "ecmaVersion": 2020,
+        "ecmaFeatures": {"jsx": true},
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": "warn",
+        "no-unsafe-negation": "error",
+        "no-unused-vars": ["warn", { "varsIgnorePattern": "^[A-Z]" }],
         "no-console": "warn",
         "no-dupe-keys": "error", 
         "no-extra-semi": "warn",
-        "eqeqeq": "warn", 
+        "eqeqeq": ["error", "smart"], 
         "curly": "off", 
         "no-param-reassign": "off",
         "no-undef": "error"

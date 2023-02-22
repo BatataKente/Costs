@@ -1,7 +1,7 @@
 import Input from '../Input'
 import Select from '../Select.js'
 import SubmitButton from '../SubmitButton'
-import styles from './ProjectForm.module.css'
+import styles from '../Form.module.css'
 import {useState, useEffect} from 'react'
 
 export default function ProjectForm({handleSubmit, buttonText, projectData}) {
@@ -25,10 +25,15 @@ export default function ProjectForm({handleSubmit, buttonText, projectData}) {
     )
     const submit = (event) => {
         event.preventDefault()
-        handleSubmit(project)
+        if(project.name !== null) handleSubmit(project)
     }
     function handleChange(arg) {
-        setProject({...project, [arg.target.name]: arg.target.value})
+        setProject(
+            {
+                ...project, 
+                [arg.target.name]: arg.target.value
+            }
+        )
     }
     function handleCategory(arg) {
         console.log(arg)
