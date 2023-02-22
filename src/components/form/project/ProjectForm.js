@@ -1,7 +1,7 @@
 import Input from '../Input'
 import Select from '../Select.js'
 import SubmitButton from '../SubmitButton'
-import styles from './ProjectForm.module.css'
+import styles from '../Form.module.css'
 import {useState, useEffect} from 'react'
 
 export default function ProjectForm({handleSubmit, buttonText, projectData}) {
