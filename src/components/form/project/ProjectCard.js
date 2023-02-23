@@ -8,6 +8,7 @@ export default function ProjectCard({project, handleRemove}) {
         event.preventDefault()
         handleRemove(project.id)
     }
+    console.log('lero lero')
     return( 
         <>
             {
