@@ -1,3 +1,4 @@
+// import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Container from './components/layout/container/Container.js';
 import Company from './components/pages/company/Company.js';
